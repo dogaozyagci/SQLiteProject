@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.sqliteproject.databinding.FragmentDetailBinding
 
 
 class DetailFragment : Fragment() {
+    lateinit var binding : FragmentDetailBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +23,28 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonAdd.setOnClickListener {
+            kaydet(it)
+        }
+        binding.imageView.setOnClickListener {
+            addPhoto(it)
+        }
+
+    }
+
+    fun kaydet(view: View){
+        println("tıklandı")
+    }
+
+    fun addPhoto(view: View){
+        println("görsel tıklandı")
     }
 
 
